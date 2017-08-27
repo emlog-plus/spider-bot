@@ -41,7 +41,7 @@ function plugin_setting_view() {
 	$query=$DB->query("select * from `".DB_PREFIX."bot` order by date desc limit ".(($page-1)*$pagenum).",$pagenum");
 	$pageurl =  pagination($count['num'],$pagenum,$page,"plugin.php?plugin=spider-bot-master&page=");
 if($count['num']){
-$i=$pageurl;
+$i=($page-1)*$pagenum;
 while($data=$DB->fetch_array($query)){
 $i++;
 ?>  
