@@ -70,9 +70,9 @@ echo '<tr><td colspan="6">暂无记录,请耐心等待一段时间再来查询�
 </table>
 </div>
 </div>
+<div class="form-group" style="padding-top:10px">
+<a href="../content/plugins/spider-bot-master/spider-bot-do.php?reset=reset&token=<?php echo LoginAuth::genToken(); ?>" class="btn btn-info">初始化</a>
 </div>
-<div class="form-group">
-<a href="../content/plugins/spider-bot-master/spider-bot-do.php?reset=reset&token=<?php echo LoginAuth::genToken(); ?>">初始化</a>
 </div>
 </div>
 </div>
