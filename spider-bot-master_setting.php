@@ -24,10 +24,61 @@ function plugin_setting_view() {
 <table id="adm_link_list"  class="table table-striped table-bordered mb-0">
 <thead>
 <tr>
+<?php
+$DB=Database::getInstance();
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS baidu FROM " . DB_PREFIX . "bot WHERE botname ='Baidu'");
+$baidu = $data['baidu'];
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS google FROM " . DB_PREFIX . "bot WHERE botname ='Google'");
+$google = $data['google'];
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS sogou FROM " . DB_PREFIX . "bot WHERE botname ='Sogou'");
+$sogou = $data['sogou'];
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS yahoo FROM " . DB_PREFIX . "bot WHERE botname ='Yahoo!'");
+$yahoo = $data['yahoo'];
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS msn FROM " . DB_PREFIX . "bot WHERE botname ='MSN'");
+$msn = $data['msn'];
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS bing FROM " . DB_PREFIX . "bot WHERE botname ='Bing'");
+$bing = $data['bing'];
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS other FROM " . DB_PREFIX . "bot WHERE botname ='Other Crawler'");
+$other = $data['other'];
+
+?>
+<th width="50" class="tdcenter"><b>百度</b></th>
+<th width="50" class="tdcenter"><b>谷歌</b></th>
+<th width="50" class="tdcenter"><b>搜狗</b></th>
+<th width="50" class="tdcenter"><b>雅虎</b></th>
+<th width="50" class="tdcenter"><b>MSN</b></th>
+<th width="50" class="tdcenter"><b>Bing</b></th>
+<th width="50" class="tdcenter"><b>其他</b></th>
+</tr>
+</thead>
+<tr>
+<td class="tdcenter"><?php echo $baidu;?></td>
+<td class="tdcenter"><?php echo $google;?></td>
+<td class="tdcenter"><?php echo $sogou;?></td>
+<td class="tdcenter"><?php echo $yahoo;?></td>
+<td class="tdcenter"><?php echo $msn;?></td>
+<td class="tdcenter"><?php echo $bing;?></td>
+<td class="tdcenter"><?php echo $other;?></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div class="panel panel-default card-view">	
+<div class="table-wrap ">
+<div class="table-responsive">		
+<table id="adm_link_list"  class="table table-striped table-bordered mb-0">
+<thead>
+<tr>
 <th width="50" class="tdcenter"><b>序号</b></th>
 <th width="80"><b>蜘蛛名称</b></th>
-<th width="255"><b>抓取链接</b></th>
-<th width="80" class="tdcenter"><b>来路IP</b></th>
+<th width="240"><b>抓取链接</b></th>
+<th width="100" class="tdcenter"><b>来路IP</b></th>
 <th width="80"><b>来访时间</b></th>
 <th width="50" class="tdcenter"><b>操作</b></th>
 </tr>
@@ -53,7 +104,7 @@ $i++;
 <?php  $details = json_decode(file_get_contents("http://ipinfo.io/{$data['serverip']}"));
 echo $details->country;?>
 </td>
-<td class="tdcenter">
+<td>
 <?php echo date("Y-m-d h:i",$data['date']);?>
 </td>
 <td class="tdcenter">
