@@ -15,7 +15,7 @@ function plugin_setting_view() {
 <div class="panel panel-default card-view">
 <div class="panel-body"> 
 <div style="color:red">温馨提示:</div>
-蜘蛛达到3000将自动初始化,当然你们也可以手动初始化
+当蜘蛛达到3000条将自动初始化,当然你们也可以手动初始化
 </div>
 </div>
 </div>
@@ -38,10 +38,12 @@ $data = $DB->once_fetch_array("SELECT COUNT(*) AS sogou FROM " . DB_PREFIX . "bo
 $sogou = $data['sogou'];
 $data = $DB->once_fetch_array("SELECT COUNT(*) AS yahoo FROM " . DB_PREFIX . "bot WHERE botname ='Yahoo!'");
 $yahoo = $data['yahoo'];
-$data = $DB->once_fetch_array("SELECT COUNT(*) AS msn FROM " . DB_PREFIX . "bot WHERE botname ='MSN'");
-$msn = $data['msn'];
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS youdao FROM " . DB_PREFIX . "bot WHERE botname ='Youdao'");
+$youdao = $data['youdao'];
 $data = $DB->once_fetch_array("SELECT COUNT(*) AS sanll FROM " . DB_PREFIX . "bot WHERE botname ='360spider'");
 $sanll = $data['sanll'];
+$data = $DB->once_fetch_array("SELECT COUNT(*) AS msn FROM " . DB_PREFIX . "bot WHERE botname ='MSN'");
+$msn = $data['msn'];
 $data = $DB->once_fetch_array("SELECT COUNT(*) AS bing FROM " . DB_PREFIX . "bot WHERE botname ='Bing'");
 $bing = $data['bing'];
 $data = $DB->once_fetch_array("SELECT COUNT(*) AS other FROM " . DB_PREFIX . "bot WHERE botname ='Other Crawler'");
@@ -51,6 +53,7 @@ $other = $data['other'];
 <th width="50" class="tdcenter"><b>谷歌</b></th>
 <th width="50" class="tdcenter"><b>搜狗</b></th>
 <th width="50" class="tdcenter"><b>雅虎</b></th>
+<th width="50" class="tdcenter"><b>有道</b></th>
 <th width="50" class="tdcenter"><b>360</b></th>
 <th width="50" class="tdcenter"><b>MSN</b></th>
 <th width="50" class="tdcenter"><b>Bing</b></th>
@@ -62,6 +65,7 @@ $other = $data['other'];
 <td class="tdcenter"><?php echo $google;?></td>
 <td class="tdcenter"><?php echo $sogou;?></td>
 <td class="tdcenter"><?php echo $yahoo;?></td>
+<td class="tdcenter"><?php echo $youdao;?></td>
 <td class="tdcenter"><?php echo $sanll;?></td>
 <td class="tdcenter"><?php echo $msn;?></td>
 <td class="tdcenter"><?php echo $bing;?></td>

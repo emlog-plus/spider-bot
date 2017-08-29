@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: 蜘蛛来访统计
-Version: 1.0
+Version: 1.1
 ForEmlog:6.0+
 Plugin URL:https://crazyus.ga
 Description: 本插件可以实时对搜索引擎来访进行统计，指导站长的运营，来访的蜘蛛类型和访问的页面都能在后台一目了然！
@@ -13,9 +13,6 @@ Author Email: gao.eison@gmail.com
 function ailab_spider(){
 	 echo '<li><a href="./plugin.php?plugin=spider-bot-master" id="spider-bot">蜘蛛来访统计</a></li>';
 }
-
-
-
 
 function sider_stat(){
        $DB = Database::getInstance();
@@ -67,9 +64,9 @@ function sider_stat(){
 	{
 		$Bot = "Alexa";
 	}
-	if (strpos($agent,"sohu")>-1)
+	if (strpos($agent,"GotSiteMonitor")>-1)
 	{
-		$Bot = "Sohu";
+		$Bot = "GotSite";
 	}
 	if (strpos($agent,"sqworm")>-1) 
 	{
@@ -85,7 +82,7 @@ function sider_stat(){
 	}
 	if (strpos($agent,"360Spider")>-1)
 	{
-		$Bot = "360Spider";
+		$Bot = "360";
 	}
 	if (strpos($agent,"Sosospider")>-1)
 	{
@@ -147,9 +144,21 @@ function sider_stat(){
 	{
 		$Bot = "YisouSpider";
 	}
-	if (strpos($agent,"360spider")>-1)
+	if (strpos($agent,"AppBeat")>-1)
 	{
-		$Bot = "360";
+		$Bot = "AppBeat";
+	}
+	if (strpos($agent,"PritTorrent")>-1)
+	{
+		$Bot = "PritTorrent";
+	}
+	if (strpos($agent,"Anturis Agent")>-1)
+	{
+		$Bot = "Anturis";
+	}
+	if (strpos($agent,"AhrefsBot")>-1)
+	{
+		$Bot = "Ahrefs";
 	}
        if($GetLocationURL&&$Bot){
         $DB->query("insert into `".DB_PREFIX . "bot` (`botname`,`date`,`botlasturl`,`serverip`) values ('$Bot','$date','$GetLocationURL','$ip')"); 
