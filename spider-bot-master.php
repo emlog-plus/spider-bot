@@ -143,6 +143,14 @@ function sider_stat(){
 	{
 		$Bot = "FAST-WebCrawler";
 	}
+	if (strpos($agent,"YisouSpider")>-1)
+	{
+		$Bot = "YisouSpider";
+	}
+	if (strpos($agent,"360spider")>-1)
+	{
+		$Bot = "360";
+	}
        if($GetLocationURL&&$Bot){
         $DB->query("insert into `".DB_PREFIX . "bot` (`botname`,`date`,`botlasturl`,`serverip`) values ('$Bot','$date','$GetLocationURL','$ip')"); 
 }
