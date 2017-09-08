@@ -296,7 +296,7 @@ $('#world_map').vectorMap(
 
       markers : [
       	<?php
-$sql="select `serverip`,count(`serverip`) as count from " . DB_PREFIX . "tourist where `serverip` ='US' or `serverip` ='CN' or `serverip` ='RU' or `serverip` ='JP' or `serverip` ='ZA'  or `serverip` ='CA' or `serverip` ='TW' or `serverip` ='GL' or `serverip` ='BR'  or `serverip` ='AU' group by `serverip`";
+$sql="select `serverip`,count(`serverip`) as count from " . DB_PREFIX . "tourist where `serverip` ='US' or `serverip` ='CN' or `serverip` ='RU' or `serverip` ='JP' or `serverip` ='ZA'  or `serverip` ='CA' or `serverip` ='TW' or `serverip` ='GL' or `serverip` ='BR'  or `serverip` ='AU' or `serverip` ='AE' or `serverip` ='IN' group by `serverip`";
 $result= $DB->query($sql);
 while($row=$DB->fetch_array($result)){
 ?>
@@ -332,6 +332,12 @@ name : '巴西 : <?php echo $row['count']?>'
 <?php }elseif($row['serverip']=="AU"){ ?> 
 latLng : [47.33,11.18],
 name : '澳大利亚 : <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="AE"){ ?> 
+latLng : [23.27,53.29],
+name : '联合阿拉伯联合酋长国 : <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="IN"){ ?> 
+latLng : [23.98,77.70],
+name : '印度: <?php echo $row['count']?>'
 <?php }?>
 },
 <?php }?>
@@ -349,6 +355,8 @@ values: {
 "GL": '#A52A2A	',
 "BR": '#1E90FF',
 "AU": '#8B008B	',
+"AE": '#8B008B	',
+"IN": '#ea6c41',
 },
 attribute: 'fill'
 }]
