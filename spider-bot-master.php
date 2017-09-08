@@ -118,7 +118,7 @@ function sider_stat(){
 	{
 		$Bot = "AOL";
 	}
-	if (strpos($agent,"yodaoBot")>-1)
+	if (strpos($agent,"yodao")>-1)
 	{
 		$Bot = "Yodao";
 	}
@@ -150,7 +150,7 @@ function sider_stat(){
 	{
 		$Bot = "Rambler";
 	}
-	if (strpos($agent,"abachobOT")>-1)
+	if (strpos($agent,"abacho")>-1)
 	{
 		$Bot = "AbachoBOT";
 	}
@@ -162,7 +162,7 @@ function sider_stat(){
 	{
 		$Bot = "Accoona";
 	}
-	if (strpos($agent,"AcoiRobot")>-1)
+	if (strpos($agent,"AcoiRo")>-1)
 	{
 		$Bot = "AcoiRobot";
 	}
@@ -170,7 +170,7 @@ function sider_stat(){
 	{
 		$Bot = "ASPSeek";
 	}
-	if (strpos($agent,"Dumbot")>-1)
+	if (strpos($agent,"Dum")>-1)
 	{
 		$Bot = "Dumbot";
 	}
@@ -186,7 +186,7 @@ function sider_stat(){
 	{
 		$Bot = "FAST-WebCrawler";
 	}
-	if (strpos($agent,"YisouSpider")>-1)
+	if (strpos($agent,"Yisou")>-1)
 	{
 		$Bot = "YisouSpider";
 	}
@@ -198,11 +198,11 @@ function sider_stat(){
 	{
 		$Bot = "PritTorrent";
 	}
-	if (strpos($agent,"Anturis Agent")>-1)
+	if (strpos($agent,"Anturis")>-1)
 	{
 		$Bot = "Anturis";
 	}
-	if (strpos($agent,"AhrefsBot")>-1)
+	if (strpos($agent,"Ahrefs")>-1)
 	{
 		$Bot = "Ahrefs";
 	}
