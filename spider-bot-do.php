@@ -12,6 +12,7 @@ if ($_GET['dele']) {
 if ($_GET['reset']) {
 LoginAuth::checkToken();
 $DB->query("TRUNCATE TABLE ". DB_PREFIX ."bot");
+$DB->query("TRUNCATE TABLE ". DB_PREFIX ."tourist");
 $CACHE->updateCache();
 echo "<script>alert('初始化成功');location.href = document.referrer;</script>";
 }
