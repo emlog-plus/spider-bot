@@ -15,7 +15,7 @@ $DB=Database::getInstance();
 #bot li{width:50%; float: left;display: block;}
 </style>
 <div class="row">
-<div class="col-md-12">
+<div class="col-lg-12">
 <div class="panel panel-default card-view">
 <div class="panel-body"> 
 <div class="form-group text-center">
@@ -51,7 +51,7 @@ echo "</li><li>CPU占用: ".$percent."% </li>";
 </div>
 </div>    
 <div class="row">
-<div class="col-sm-12">
+<div class="col-lg-12">
 <div class="panel panel-default card-view">	
 <div class="table-wrap ">
 <div class="table-responsive">		
@@ -141,7 +141,7 @@ while($row=$DB->fetch_array($result)){
 </div>
 </div>
  <div class="row">
-<div class="col-md-12">
+<div class="col-lg-12">
 <div class="panel panel-default card-view">
 <div class="panel-heading">
 <div class="pull-left">
@@ -174,7 +174,7 @@ $color=array_rand($input);
 </div>	
 </div>
 <div class="row">
-<div class="col-md-12">
+<div class="col-lg-12">
 <div class="panel panel-default card-view">
 <div class="panel-body">  
 <div style="color:red">温馨提示:</div>
@@ -187,7 +187,7 @@ $color=array_rand($input);
 </div>
 </div>    
 <div class="row">
-<div class="col-sm-12">
+<div class="col-lg-12">
 <div class="panel panel-default card-view">	
 <div class="table-wrap ">
 <div class="table-responsive">		
@@ -248,7 +248,7 @@ echo '<tr class="tdcenter"><td colspan="6">暂无记录,请耐心等待一段时
 </div>
 <?php if(!empty($pageurl)){ ?>
 <div class="row">
-<div class="col-sm-12">
+<div class="col-lg-12">
 <div class="panel panel-default card-view">
 <div class="panel-heading">
 <div class="form-group text-center">
