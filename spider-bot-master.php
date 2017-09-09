@@ -15,19 +15,17 @@ function ailab_spider(){
 }
 
 function sider_stat(){
+       include(EMLOG_ROOT.'/content/plugins/spider-bot-master/spider-bot-ip.php');
        $DB = Database::getInstance();
 	$QueryString = $_SERVER["QUERY_STRING"]  ;  
 	$domain=$_SERVER['HTTP_HOST'];
 	$url=$_SERVER['REQUEST_URI'];
 	$ip=getIp();
 	$date=time();
-	$ip_data = @json_decode
-(file_get_contents("http://www.geoplugin.net/json.gp?ip=".$ip));
-
- $result = $ip_data->geoplugin_countryCode;
- //$results = $ip_data->geoplugin_city;
-
-  $user_OSagent = $_SERVER['HTTP_USER_AGENT'];
+        $geoData = geoip_open(EMLOG_ROOT.'/content/plugins/spider-bot-master/GeoIP.dat', GEOIP_STANDARD);
+$result = geoip_country_code_by_addr($geoData, $ip);
+geoip_close($geoData);
+   $user_OSagent = $_SERVER['HTTP_USER_AGENT'];
     if (strpos($user_OSagent, "Maxthon") && strpos($user_OSagent, "MSIE")) {
         $visitor_browser = "Maxthon(Microsoft IE)";
     } elseif (strpos($user_OSagent, "Maxthon 2.0")) {

@@ -317,7 +317,7 @@ $('#world_map').vectorMap(
       markers : [
       	<?php
 $DB=Database::getInstance();
-$sql="select `serverip`,count(`serverip`) as count from " . DB_PREFIX . "tourist where `serverip` ='US' or `serverip` ='CN' or `serverip` ='RU' or `serverip` ='JP' or `serverip` ='ZA'  or `serverip` ='CA' or `serverip` ='TW' or `serverip` ='GL' or `serverip` ='BR'  or `serverip` ='AU' or `serverip` ='AE' or `serverip` ='IN' or `serverip` ='MX'  or `serverip` ='DE'  or `serverip` ='TR' or `serverip` ='ES' or `serverip` ='IT' or `serverip` ='MM' or `serverip` ='PL'  or `serverip` ='RO' or `serverip` ='SG' or `serverip` ='IE'   or `serverip` ='KR' group by `serverip`";
+$sql="select `serverip`,count(`serverip`) as count from " . DB_PREFIX . "tourist where `serverip` ='US' or `serverip` ='CN' or `serverip` ='RU' or `serverip` ='JP' or `serverip` ='ZA'  or `serverip` ='CA' or `serverip` ='TW' or `serverip` ='GL' or `serverip` ='BR'  or `serverip` ='AU' or `serverip` ='AE' or `serverip` ='IN' or `serverip` ='MX'  or `serverip` ='DE'  or `serverip` ='TR' or `serverip` ='ES' or `serverip` ='IT' or `serverip` ='MM' or `serverip` ='PL'  or `serverip` ='RO' or `serverip` ='SG' or `serverip` ='IE'   or `serverip` ='KR' or `serverip` ='DZ'   or `serverip` ='MY' or `serverip` ='GB' group by `serverip`";
 $result= $DB->query($sql);
 while($row=$DB->fetch_array($result)){
 ?>
@@ -391,6 +391,15 @@ name : '爱尔兰: <?php echo $row['count']?>'
 <?php }elseif($row['serverip']=="KR"){ ?> 
 latLng : [35.12,129.09],
 name : '韩国: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="DZ"){ ?> 
+latLng : [26.45,7.42],
+name : '阿尔及利亚: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="MY"){ ?> 
+latLng : [4.34,118.56],
+name : '马来西亚: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="GB"){ ?> 
+latLng : [53.75,-0.31],
+name : '联合王国: <?php echo $row['count']?>'
 
 <?php }?>
 },
@@ -423,6 +432,10 @@ values: {
 "KR": '#800000',
 "IE": '#2F4F4F',
 "MA":'#D2691E',
+"CY":'#000000',
+"DZ":'#3D9970',
+"MY":'#B10DC9',
+"GB":'#39CCCC',
 },
 attribute: 'fill'
 }]
