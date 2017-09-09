@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: 来访记录
-Version: 1.3
+Version: 1.4
 ForEmlog:6.0+
 Plugin URL:https://crazyus.ga
 Description: 本插件可以实时对搜索引擎来访进行统计，指导站长的运营，来访的蜘蛛类型和访问的页面都能在后台一目了然！
@@ -110,7 +110,7 @@ function sider_stat(){
 	{
 		$Bot = "Alexa";
 	}
-	if (strpos($agent,"GotSiteMonitor")>-1)
+	if (strpos($agent,"gotsitemonitor")>-1)
 	{
 		$Bot = "GotSite";
 	}
@@ -118,7 +118,7 @@ function sider_stat(){
 	{
 		$Bot = "AOL";
 	}
-	if (strpos($agent,"yodao")>-1)
+	if (strpos($agent,"yodaobot")>-1)
 	{
 		$Bot = "Yodao";
 	}
@@ -126,11 +126,11 @@ function sider_stat(){
 	{
 		$Bot = "Iask";
 	}
-	if (strpos($agent,"360Spider")>-1)
+	if (strpos($agent,"360spider")>-1)
 	{
 		$Bot = "360";
 	}
-	if (strpos($agent,"Sosospider")>-1)
+	if (strpos($agent,"sosospider")>-1)
 	{
 		$Bot = "Soso";
 	}
@@ -162,47 +162,47 @@ function sider_stat(){
 	{
 		$Bot = "Accoona";
 	}
-	if (strpos($agent,"AcoiRo")>-1)
+	if (strpos($agent,"acoirobot")>-1)
 	{
 		$Bot = "AcoiRobot";
 	}
-	if (strpos($agent,"ASPSeek")>-1)
+	if (strpos($agent,"aspseek")>-1)
 	{
 		$Bot = "ASPSeek";
 	}
-	if (strpos($agent,"Dum")>-1)
+	if (strpos($agent,"dumbot")>-1)
 	{
 		$Bot = "Dumbot";
 	}
-	if (strpos($agent,"Facebook")>-1)
+	if (strpos($agent,"facebook")>-1)
 	{
 		$Bot = "Facebook";
 	}
-	if (strpos($agent,"CrocCrawler")>-1)
+	if (strpos($agent,"croccrawler")>-1)
 	{
 		$Bot = "CrocCrawler";
 	}
-	if (strpos($agent,"FAST-WebCrawler")>-1)
+	if (strpos($agent,"fast-webcrawler")>-1)
 	{
 		$Bot = "FAST-WebCrawler";
 	}
-	if (strpos($agent,"Yisou")>-1)
+	if (strpos($agent,"yisou")>-1)
 	{
-		$Bot = "YisouSpider";
+		$Bot = "Yisou";
 	}
-	if (strpos($agent,"AppBeat")>-1)
+	if (strpos($agent,"appbeat")>-1)
 	{
 		$Bot = "AppBeat";
 	}
-	if (strpos($agent,"PritTorrent")>-1)
+	if (strpos($agent,"prittorrent")>-1)
 	{
 		$Bot = "PritTorrent";
 	}
-	if (strpos($agent,"Anturis")>-1)
+	if (strpos($agent,"anturis")>-1)
 	{
 		$Bot = "Anturis";
 	}
-	if (strpos($agent,"Ahrefs")>-1)
+	if (strpos($agent,"ahrefsbot")>-1)
 	{
 		$Bot = "Ahrefs";
 	}

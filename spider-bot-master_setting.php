@@ -1,7 +1,7 @@
 <?php
 !defined('EMLOG_ROOT') && exit('access deined!');
 function plugin_setting_view() {
-
+$DB=Database::getInstance();
 }
 ?>
 <div class="heading-bg  card-views">
@@ -19,7 +19,8 @@ function plugin_setting_view() {
 <div class="panel panel-default card-view">
 <div class="panel-body"> 
 <div class="form-group text-center">
-<div id="bot"><?php
+<div id="bot">
+<?php
 $mode = "/(cpu)[\s]+([0-9]+)[\s]+([0-9]+)[\s]+([0-9]+)[\s]+([0-9]+)[\s]+([0-9]+)[\s]+([0-9]+)[\s]+([0-9]+)[\s]+([0-9]+)/";
 $string=shell_exec("more /proc/stat");
 preg_match_all($mode,$string,$arr);
@@ -55,26 +56,27 @@ echo "</li><li>CPU占用: ".$percent."% </li>";
 <div class="panel panel-default card-view">	
 <div class="table-wrap ">
 <div class="table-responsive">		
-<table id="adm_link_list"  class="table table-striped table-bordered mb-0">
+<table  class="table table-striped table-bordered mb-0">
 <thead>
 <tr>
 <?php
 $DB=Database::getInstance();
-$sql="select `botname` from " . DB_PREFIX . "bot where `botname`='Baidu' or `botname`='Google'  or `botname`='Sogou' or `botname`='Yahoo' or `botname`='Youdao' or `botname`='360spider' or `botname`='MSN' or `botname`='Bing' or `botname`='Other Crawler' or `botname`='Yandex' group by `botname` ASC";
+$sql="select `botname` from " . DB_PREFIX . "bot where `botname`='Baidu' or `botname`='Google'  or `botname`='Sogou' or `botname`='Yahoo' or `botname`='Youdao' or `botname`='360' or `botname`='MSN' or `botname`='Bing' or `botname`='Ahrefs' or `botname`='Yandex' or `botname`='Yisou' group by `botname` ASC";
 $result= $DB->query($sql);
+ if($row=$DB->num_rows($result)!=0){
 while($row=$DB->fetch_array($result)){
 ?>
 <?php if($row['botname']=="Baidu"){ ?> 
-<th width="50" class="tdcenter"><b>百度</b></th>
+<th width="50" class="tdcenter"><b>Baidu</b></th>
 <?php }elseif($row['botname']=="Google"){ ?> 
-<th width="50" class="tdcenter"><b>谷歌</b></th>
+<th width="50" class="tdcenter"><b>Google</b></th>
 <?php }elseif($row['botname']=="Sogou"){ ?> 
-<th width="50" class="tdcenter"><b>搜狗</b></th>
+<th width="50" class="tdcenter"><b>sogou</b></th>
 <?php }elseif($row['botname']=="Yahoo"){ ?> 
-<th width="50" class="tdcenter"><b>雅虎</b></th>
+<th width="50" class="tdcenter"><b>Yahoo</b></th>
 <?php }elseif($row['botname']=="Youdao"){ ?> 
-<th width="50" class="tdcenter"><b>有道</b></th>
-<?php }elseif($row['botname']=="360spider"){ ?> 
+<th width="50" class="tdcenter"><b>Youdao</b></th>
+<?php }elseif($row['botname']=="360"){ ?> 
 <th width="50" class="tdcenter"><b>360</b></th>
 <?php }elseif($row['botname']=="MSN"){ ?> 
 <th width="50" class="tdcenter"><b>MSN</b></th>
@@ -82,13 +84,17 @@ while($row=$DB->fetch_array($result)){
 <th width="50" class="tdcenter"><b>Bing</b></th>
 <?php }elseif($row['botname']=="Yandex"){ ?> 
 <th width="50" class="tdcenter"><b>Yandex</b></th>
+<?php }elseif($row['botname']=="Ahrefs"){ ?> 
+<th width="50" class="tdcenter"><b>Ahrefs</b></th>
+<?php }elseif($row['botname']=="Yisou"){ ?> 
+<th width="50" class="tdcenter"><b>Yisou</b></th>
 <?php } }?>
 </tr>
 </thead>
 <tr>
 <?php
 $DB=Database::getInstance();
-$sql="select `botname`,count(`botname`) as count from " . DB_PREFIX . "bot where `botname`='Baidu' or `botname`='Google'  or `botname`='Sogou' or `botname`='Yahoo' or `botname`='Youdao' or `botname`='360spider' or `botname`='MSN' or `botname`='Bing'  or `botname`='Yandex' group by `botname` ASC ";
+$sql="select `botname`,count(`botname`) as count from " . DB_PREFIX . "bot where `botname`='Baidu' or `botname`='Google'  or `botname`='Sogou' or `botname`='Yahoo' or `botname`='Youdao' or `botname`='360' or `botname`='MSN' or `botname`='Bing'  or `botname`='Ahrefs' or `botname`='Yandex' or `botname`='Yisou' group by `botname` ASC ";
 $result= $DB->query($sql);
 while($row=$DB->fetch_array($result)){
 ?>
@@ -102,7 +108,7 @@ while($row=$DB->fetch_array($result)){
 <td class="tdcenter"><?php echo $row['count'] ?></td>
 <?php }elseif($row['botname']=="Youdao"){ ?> 
 <td class="tdcenter"><?php echo $row['count'] ?></td>
-<?php }elseif($row['botname']=="360spider"){ ?> 
+<?php }elseif($row['botname']=="360"){ ?> 
 <td class="tdcenter"><?php echo $row['count'] ?></td>
 <?php }elseif($row['botname']=="MSN"){ ?> 
 <td class="tdcenter"><?php echo $row['count'] ?></td>
@@ -110,8 +116,15 @@ while($row=$DB->fetch_array($result)){
 <td class="tdcenter"><?php echo $row['count'] ?></td>
 <?php }elseif($row['botname']=="Yandex"){ ?> 
 <td class="tdcenter"><?php echo $row['count'] ?></td>
+<?php }elseif($row['botname']=="Ahrefs"){ ?> 
+<td class="tdcenter"><?php echo $row['count'] ?></td>
+<?php }elseif($row['botname']=="Yisou"){ ?> 
+<td class="tdcenter"><?php echo $row['count'] ?></td>
 <?php } ?>
 <?php  } ?>
+<?php }else{ ?>
+<td class="tdcenter">暂无记录,请耐心等待一段时间再来查询！</td>
+<?php } ?>
 </tr>
 </tbody>
 </table>
@@ -128,6 +141,9 @@ while($row=$DB->fetch_array($result)){
 <h6 class="panel-title txt-dark">区域统计</h6>
 </div>
 <div class="pull-right">
+<a href="#" class="pull-left inline-block full-screen mr-15">
+<i class="zmdi zmdi-fullscreen"></i>
+</a>
 <a href="#" class="pull-left inline-block close-panel" data-effect="fadeOut">
 <i class="zmdi zmdi-close"></i>
 </a>
@@ -207,7 +223,7 @@ $color=array_rand($input);
 </thead>
 <tbody>
 <?php
-$DB=Database::getInstance();
+       $DB=Database::getInstance();
 	$page=max(1,intval($_GET['page']));
 	$pagenum=20;
 	$count=$DB->once_fetch_array("select count(*) as num from `".DB_PREFIX."bot` ");	
@@ -300,13 +316,12 @@ $('#world_map').vectorMap(
 
       markers : [
       	<?php
-$DB=Database::getInstance();      	
-$sql="select `serverip`,count(`serverip`) as count from " . DB_PREFIX . "tourist where `serverip` ='US' or `serverip` ='CN' or `serverip` ='RU' or `serverip` ='JP' or `serverip` ='ZA'  or `serverip` ='CA' or `serverip` ='TW' or `serverip` ='GL' or `serverip` ='BR'  or `serverip` ='AU' or `serverip` ='AE' or `serverip` ='IN' or `serverip` ='MX'  or `serverip` ='DE'  or `serverip` ='TR' or `serverip` ='ES' group by `serverip`";
+$DB=Database::getInstance();
+$sql="select `serverip`,count(`serverip`) as count from " . DB_PREFIX . "tourist where `serverip` ='US' or `serverip` ='CN' or `serverip` ='RU' or `serverip` ='JP' or `serverip` ='ZA'  or `serverip` ='CA' or `serverip` ='TW' or `serverip` ='GL' or `serverip` ='BR'  or `serverip` ='AU' or `serverip` ='AE' or `serverip` ='IN' or `serverip` ='MX'  or `serverip` ='DE'  or `serverip` ='TR' or `serverip` ='ES' or `serverip` ='IT' or `serverip` ='MM' or `serverip` ='PL'  or `serverip` ='RO' or `serverip` ='SG' or `serverip` ='IE'   or `serverip` ='KR' group by `serverip`";
 $result= $DB->query($sql);
 while($row=$DB->fetch_array($result)){
 ?>
-
-      {
+{
 <?php if($row['serverip']=="US"){ ?> 
 latLng : [40.77, -109.41],
 name : '美国 : <?php echo $row['count']?>'
@@ -335,11 +350,11 @@ name : '格陵兰 : <?php echo $row['count']?>'
 latLng : [-18.59,-48.55],
 name : '巴西 : <?php echo $row['count']?>'
 <?php }elseif($row['serverip']=="AU"){ ?> 
-latLng : [47.33,11.18],
+latLng : [-38.54,143.97],
 name : '澳大利亚 : <?php echo $row['count']?>'
 <?php }elseif($row['serverip']=="AE"){ ?> 
 latLng : [23.27,53.29],
-name : '联合阿拉伯联合酋长国 : <?php echo $row['count']?>'
+name : '联合酋长国 : <?php echo $row['count']?>'
 <?php }elseif($row['serverip']=="IN"){ ?> 
 latLng : [23.98,77.70],
 name : '印度: <?php echo $row['count']?>'
@@ -350,11 +365,33 @@ name : '墨西哥: <?php echo $row['count']?>'
 latLng : [50.36,7.58],
 name : '德国: <?php echo $row['count']?>'
 <?php }elseif($row['serverip']=="TR"){ ?> 
-latLng : [41.02,28.93],
+latLng : [38.02,30.93],
 name : '土耳其: <?php echo $row['count']?>'
 <?php }elseif($row['serverip']=="ES"){ ?> 
-latLng : [40.498138,-3.882294],
+latLng : [40.49,-3.88],
 name : '西班牙: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="IT"){ ?> 
+latLng : [41.89,12.44],
+name : '意大利: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="MM"){ ?> 
+latLng : [20.36,93.27],
+name : '缅甸: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="PL"){ ?> 
+latLng : [51.27,19.03],
+name : '波兰: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="RO"){ ?> 
+latLng : [45.16,25.63],
+name : '罗马尼亚: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="SG"){ ?> 
+latLng : [1.29,103.85],
+name : '新加坡: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="IE"){ ?> 
+latLng : [53.35,-6.25],
+name : '爱尔兰: <?php echo $row['count']?>'
+<?php }elseif($row['serverip']=="KR"){ ?> 
+latLng : [35.12,129.09],
+name : '韩国: <?php echo $row['count']?>'
+
 <?php }?>
 },
 <?php }?>
@@ -371,14 +408,21 @@ values: {
 "TW": '#177ec1',
 "GL": '#A52A2A	',
 "BR": '#1E90FF',
-"AU": '#8B008B	',
+"AU": '#4169E1	',
 "AE": '#8B008B	',
 "IN": '#ea6c41',
 "MX": '#00ffbf',
 "DE": '#ff0000',
 "TR": '#0000ff',
 "ES": '#ffff00',
-"PL": '#8000ff',
+"PL": '#708090',
+"IT": '#4B0082',
+"MM": '#F4A460',
+"NI": '#DC143C',
+"RO": '#A52A2A',
+"KR": '#800000',
+"IE": '#2F4F4F',
+"MA":'#D2691E',
 },
 attribute: 'fill'
 }]
