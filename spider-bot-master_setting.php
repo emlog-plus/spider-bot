@@ -192,6 +192,51 @@ $color=array_rand($input);
 </div>
 </div>	
 </div>
+ <div class="row">
+<div class="col-lg-12">
+<div class="panel panel-default card-view">
+<div class="panel-wrapper collapse in">
+<div class="panel-body sm-data-box-1">
+<span class="uppercase-font weight-500 font-14 block text-center txt-dark">距离三千目标</span>
+<?php
+$DB=Database::getInstance();
+$hope=$DB->query("select count(*) as num from `".DB_PREFIX."bot`");	
+$r = $DB->fetch_array($hope);
+$num = $r["num"];
+$yest=$DB->query("select count(*) as yes from `".DB_PREFIX."bot` WHERE TO_DAYS(NOW()) - `date`= 1");	
+$y = $DB->fetch_array($yest);
+$yesterday=$y["yes"];
+$now=$DB->query("select count(*) as now from `".DB_PREFIX."bot` WHERE TO_DAYS(NOW())");	
+$n = $DB->fetch_array($now);
+$nows=$n["now"];
+?>
+<div class="cus-sat-stat weight-500 txt-success text-center mt-5">
+<span class="counter-anim"><?php echo $num ?></span><span>%</span>
+</div>
+<div class="progress-anim mt-20">
+<div class="progress">
+<div class="progress-bar progress-bar-success wow animated progress-animated" role="progressbar" aria-valuenow="<?php echo $num ?>" aria-valuemin="0" aria-valuemax="3000"></div>
+</div>
+</div>
+<ul class="flex-stat mt-5">
+<li class="half-width">
+<span class="block">以前</span>
+<span class="block txt-dark weight-500 font-15">
+<i class="zmdi zmdi-trending-up txt-success font-20 mr-10"></i><?php echo $yesterday ?>
+</span>
+</li>
+<li class="half-width">
+<span class="block">今天</span>
+<span class="block txt-dark weight-500 font-15">+<?php echo $nows ?></span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="row">
 <div class="col-lg-12">
 <div class="panel panel-default card-view">
