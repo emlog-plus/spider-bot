@@ -211,11 +211,11 @@ $n = $DB->fetch_array($now);
 $nows=$n["now"];
 ?>
 <div class="cus-sat-stat weight-500 txt-success text-center mt-5">
-<span class="counter-anim"><?php echo $num ?></span><span>%</span>
+<span class="counter-anim"><?php echo round($num/30,2)?></span><span>%</span>
 </div>
 <div class="progress-anim mt-20">
 <div class="progress">
-<div class="progress-bar progress-bar-success wow animated progress-animated" role="progressbar" aria-valuenow="<?php echo $num ?>" aria-valuemin="0" aria-valuemax="3000"></div>
+<div class="progress-bar progress-bar-success wow animated progress-animated" role="progressbar" aria-valuenow="<?php echo $num/30 ?>" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 </div>
 <ul class="flex-stat mt-5">
