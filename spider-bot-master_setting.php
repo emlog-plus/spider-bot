@@ -1,7 +1,7 @@
 <?php
 !defined('EMLOG_ROOT') && exit('access deined!');
 function plugin_setting_view() {
-$DB=Database::getInstance();
+
 }
 ?>
 <div class="heading-bg  card-views">
@@ -59,6 +59,7 @@ echo "</li><li>CPU占用: ".$percent."% </li>";
 <thead>
 <tr>
 <?php
+$DB=Database::getInstance();
 $sql="select `botname` from " . DB_PREFIX . "bot where `botname`='Baidu' or `botname`='Google'  or `botname`='Sogou' or `botname`='Yahoo' or `botname`='Youdao' or `botname`='360spider' or `botname`='MSN' or `botname`='Bing' or `botname`='Other Crawler' or `botname`='Yandex' group by `botname` ASC";
 $result= $DB->query($sql);
 while($row=$DB->fetch_array($result)){
@@ -86,6 +87,7 @@ while($row=$DB->fetch_array($result)){
 </thead>
 <tr>
 <?php
+$DB=Database::getInstance();
 $sql="select `botname`,count(`botname`) as count from " . DB_PREFIX . "bot where `botname`='Baidu' or `botname`='Google'  or `botname`='Sogou' or `botname`='Yahoo' or `botname`='Youdao' or `botname`='360spider' or `botname`='MSN' or `botname`='Bing'  or `botname`='Yandex' group by `botname` ASC ";
 $result= $DB->query($sql);
 while($row=$DB->fetch_array($result)){
@@ -157,6 +159,7 @@ while($row=$DB->fetch_array($result)){
 <div class="panel-wrapper collapse in">
 <div class="panel-body">
 <?php
+$DB=Database::getInstance();
 $sql="select `id`,`name`,count(`name`) as count from " . DB_PREFIX . "tourist group by `name`";
 $result= $DB->query($sql);
 while($row=$DB->fetch_array($result)){
@@ -204,6 +207,7 @@ $color=array_rand($input);
 </thead>
 <tbody>
 <?php
+$DB=Database::getInstance();
 	$page=max(1,intval($_GET['page']));
 	$pagenum=20;
 	$count=$DB->once_fetch_array("select count(*) as num from `".DB_PREFIX."bot` ");	
@@ -296,6 +300,7 @@ $('#world_map').vectorMap(
 
       markers : [
       	<?php
+$DB=Database::getInstance();      	
 $sql="select `serverip`,count(`serverip`) as count from " . DB_PREFIX . "tourist where `serverip` ='US' or `serverip` ='CN' or `serverip` ='RU' or `serverip` ='JP' or `serverip` ='ZA'  or `serverip` ='CA' or `serverip` ='TW' or `serverip` ='GL' or `serverip` ='BR'  or `serverip` ='AU' or `serverip` ='AE' or `serverip` ='IN' or `serverip` ='MX'  or `serverip` ='DE'  or `serverip` ='TR' or `serverip` ='ES' group by `serverip`";
 $result= $DB->query($sql);
 while($row=$DB->fetch_array($result)){
