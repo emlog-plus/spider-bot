@@ -14,8 +14,6 @@ $DB=Database::getInstance();
 #bot{width:100%}
 #bot li{width:50%; float: left;display: block;}
 </style>
-<?php if (class_exists('shell_exec', FALSE)) { ?>
-<?php }else{ ?>
 <div class="row">
 <div class="col-lg-12">
 <div class="panel panel-default card-view">
@@ -53,7 +51,6 @@ echo "</li><li>CPU占用: ".$percent."% </li>";
 </div>
 </div>
 </div>    
-<?php } ?>
 <div class="row">
 <div class="col-lg-12">
 <div class="panel panel-default card-view">	
