@@ -202,16 +202,13 @@ $color=array_rand($input);
 $DB=Database::getInstance();
 $hope=$DB->query("select count(*) as num from `".DB_PREFIX."bot`");	
 $r = $DB->fetch_array($hope);
-$num = $r["num"];
-$yest=$DB->query("select count(*) as yes from `".DB_PREFIX."bot` WHERE TO_DAYS(NOW()) - `date`= 1");	
-$y = $DB->fetch_array($yest);
-$yesterday=$y["yes"];
-$now=$DB->query("select count(*) as now from `".DB_PREFIX."bot` WHERE TO_DAYS(NOW())");	
+$num=$r['num'];
+$now=$DB->query("select count(*) as now from `".DB_PREFIX."bot` WHERE `date` ");	
 $n = $DB->fetch_array($now);
 $nows=$n["now"];
 ?>
 <div class="cus-sat-stat weight-500 txt-success text-center mt-5">
-<span class="counter-anim"><?php echo round($num/30,2)?></span><span>%</span>
+<span class="counter-anim"><?php echo round($num/30,2) ?></span><span>%</span>
 </div>
 <div class="progress-anim mt-20">
 <div class="progress">
@@ -220,13 +217,13 @@ $nows=$n["now"];
 </div>
 <ul class="flex-stat mt-5">
 <li class="half-width">
-<span class="block">以前</span>
+<span class="block">走势</span>
 <span class="block txt-dark weight-500 font-15">
-<i class="zmdi zmdi-trending-up txt-success font-20 mr-10"></i><?php echo $yesterday ?>
+<i class="zmdi zmdi-trending-up txt-success font-20 mr-10"></i>
 </span>
 </li>
 <li class="half-width">
-<span class="block">今天</span>
+<span class="block">爬量</span>
 <span class="block txt-dark weight-500 font-15">+<?php echo $nows ?></span>
 </li>
 </ul>
