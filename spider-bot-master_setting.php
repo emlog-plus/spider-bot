@@ -6,7 +6,7 @@ $DB=Database::getInstance();
 ?>
 <div class="heading-bg  card-views">
 <ul class="breadcrumbs">
- <li><a href="./"><i class="fa fa-home"></i> 首页</a></li>
+ <li><a href="./"><i class="fa fa-home"></i> <?php echo langs('home') ?></a></li>
 <li class="active">来访记录</li>
  </ul>
 </div>
@@ -14,6 +14,8 @@ $DB=Database::getInstance();
 #bot{width:100%}
 #bot li{width:50%; float: left;display: block;}
 </style>
+<?php if (class_exists('shell_exec', FALSE)) { ?>
+<?php }else{ ?>
 <div class="row">
 <div class="col-lg-12">
 <div class="panel panel-default card-view">
@@ -51,6 +53,7 @@ echo "</li><li>CPU占用: ".$percent."% </li>";
 </div>
 </div>
 </div>    
+<?php } ?>
 <div class="row">
 <div class="col-lg-12">
 <div class="panel panel-default card-view">	
