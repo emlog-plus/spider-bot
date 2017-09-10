@@ -6,7 +6,7 @@ $DB=Database::getInstance();
 ?>
 <div class="heading-bg  card-views">
 <ul class="breadcrumbs">
- <li><a href="./"><i class="fa fa-home"></i> <?php echo langs('home') ?></a></li>
+ <li><a href="./"><i class="fa fa-home"></i> 首页</a></li>
 <li class="active">来访记录</li>
  </ul>
 </div>
